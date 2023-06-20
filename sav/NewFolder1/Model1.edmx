@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище SavModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id_client" />
+          </Key>
+          <Property Name="Id_client" Type="int" Nullable="false" />
+          <Property Name="FIO_client" Type="nvarchar(max)" />
+          <Property Name="Telefon_number" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id_employee" />
+          </Key>
+          <Property Name="Id_employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO_employe" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_role" Type="int" />
+          <Property Name="Attendance" Type="nvarchar" MaxLength="50" />
+          <Property Name="Schedule" Type="nvarchar" MaxLength="50" />
+          <Property Name="Release_date" Type="date" />
+          <Property Name="Salary" Type="money" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "Sav.dbo.InfEmployee" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="InfEmployee">
+          <Property Name="Id_employee" Type="int" />
+          <Property Name="Attendance" Type="nvarchar" MaxLength="50" />
+          <Property Name="Schedule" Type="nvarchar" MaxLength="50" />
+          <Property Name="Release_date" Type="date" />
+        </EntityType>-->
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Number_order" />
+          </Key>
+          <Property Name="Number_order" Type="int" Nullable="false" />
+          <Property Name="Id_client" Type="int" />
+          <Property Name="Id_services" Type="int" />
+          <Property Name="Date_orders" Type="date" />
+          <Property Name="Deadline" Type="date" />
+          <Property Name="Id_employee" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders_Services">
+          <Key>
+            <PropertyRef Name="Id_orders" />
+          </Key>
+          <Property Name="Id_orders" Type="int" Nullable="false" />
+          <Property Name="Id_services" Type="int" />
+          <Property Name="Number_orders" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id_role" />
+          </Key>
+          <Property Name="Id_role" Type="int" Nullable="false" />
+          <Property Name="Name_role" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id_services" />
+          </Key>
+          <Property Name="Id_services" Type="int" Nullable="false" />
+          <Property Name="Name_servisec" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price_services" Type="money" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id_role" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders\services_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="Orders_Services" Type="Self.Orders_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Number_order" />
+            </Principal>
+            <Dependent Role="Orders_Services">
+              <PropertyRef Name="Number_orders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders\services_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+          <End Role="Orders_Services" Type="Self.Orders_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id_services" />
+            </Principal>
+            <Dependent Role="Orders_Services">
+              <PropertyRef Name="Id_services" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id_client" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SavModelContainer">
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders_Services" EntityType="Self.Orders_Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders\services_Orders" Association="Self.FK_Orders\services_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders\services_Services" Association="Self.FK_Orders\services_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Clients" Association="Self.FK_Orders_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Employee" Association="Self.FK_Orders_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SavModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SavEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="SavModel.Clients" />
+          <EntitySet Name="Employee" EntityType="SavModel.Employee" />
+          <EntitySet Name="Orders" EntityType="SavModel.Orders" />
+          <EntitySet Name="Orders_Services" EntityType="SavModel.Orders_Services" />
+          <EntitySet Name="Role" EntityType="SavModel.Role" />
+          <EntitySet Name="Services" EntityType="SavModel.Services" />
+          <EntitySet Name="sysdiagrams" EntityType="SavModel.sysdiagrams" />
+          <AssociationSet Name="FK_Orders_Clients" Association="SavModel.FK_Orders_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="SavModel.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Employee" Association="SavModel.FK_Orders_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_services_Orders" Association="SavModel.FK_Orders_services_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_services_Services" Association="SavModel.FK_Orders_services_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Orders_Services" EntitySet="Orders_Services" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id_client" />
+          </Key>
+          <Property Name="Id_client" Type="Int32" Nullable="false" />
+          <Property Name="FIO_client" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon_number" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="SavModel.FK_Orders_Clients" FromRole="Clients" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id_employee" />
+          </Key>
+          <Property Name="Id_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO_employe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_role" Type="Int32" />
+          <Property Name="Attendance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Schedule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Release_date" Type="DateTime" Precision="0" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Role" Relationship="SavModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="Orders" Relationship="SavModel.FK_Orders_Employee" FromRole="Employee" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Number_order" />
+          </Key>
+          <Property Name="Number_order" Type="Int32" Nullable="false" />
+          <Property Name="Id_client" Type="Int32" />
+          <Property Name="Id_services" Type="Int32" />
+          <Property Name="Date_orders" Type="DateTime" Precision="0" />
+          <Property Name="Deadline" Type="DateTime" Precision="0" />
+          <Property Name="Id_employee" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="SavModel.FK_Orders_Clients" FromRole="Orders" ToRole="Clients" />
+          <NavigationProperty Name="Employee" Relationship="SavModel.FK_Orders_Employee" FromRole="Orders" ToRole="Employee" />
+          <NavigationProperty Name="Orders_Services" Relationship="SavModel.FK_Orders_services_Orders" FromRole="Orders" ToRole="Orders_Services" />
+        </EntityType>
+        <EntityType Name="Orders_Services">
+          <Key>
+            <PropertyRef Name="Id_orders" />
+          </Key>
+          <Property Name="Id_orders" Type="Int32" Nullable="false" />
+          <Property Name="Id_services" Type="Int32" />
+          <Property Name="Number_orders" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="SavModel.FK_Orders_services_Orders" FromRole="Orders_Services" ToRole="Orders" />
+          <NavigationProperty Name="Services" Relationship="SavModel.FK_Orders_services_Services" FromRole="Orders_Services" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id_role" />
+          </Key>
+          <Property Name="Id_role" Type="Int32" Nullable="false" />
+          <Property Name="Name_role" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="SavModel.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id_services" />
+          </Key>
+          <Property Name="Id_services" Type="Int32" Nullable="false" />
+          <Property Name="Name_servisec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price_services" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Orders_Services" Relationship="SavModel.FK_Orders_services_Services" FromRole="Services" ToRole="Orders_Services" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Orders_Clients">
+          <End Type="SavModel.Clients" Role="Clients" Multiplicity="0..1" />
+          <End Type="SavModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id_client" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Type="SavModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="SavModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id_role" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Employee">
+          <End Type="SavModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="SavModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_services_Orders">
+          <End Type="SavModel.Orders" Role="Orders" Multiplicity="0..1" />
+          <End Type="SavModel.Orders_Services" Role="Orders_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Number_order" />
+            </Principal>
+            <Dependent Role="Orders_Services">
+              <PropertyRef Name="Number_orders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_services_Services">
+          <End Type="SavModel.Services" Role="Services" Multiplicity="0..1" />
+          <End Type="SavModel.Orders_Services" Role="Orders_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id_services" />
+            </Principal>
+            <Dependent Role="Orders_Services">
+              <PropertyRef Name="Id_services" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SavModelContainer" CdmEntityContainer="SavEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="SavModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Telefon_number" ColumnName="Telefon_number" />
+                <ScalarProperty Name="FIO_client" ColumnName="FIO_client" />
+                <ScalarProperty Name="Id_client" ColumnName="Id_client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="SavModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Release_date" ColumnName="Release_date" />
+                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+                <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+                <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="FIO_employe" ColumnName="FIO_employe" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="SavModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="Date_orders" ColumnName="Date_orders" />
+                <ScalarProperty Name="Id_services" ColumnName="Id_services" />
+                <ScalarProperty Name="Id_client" ColumnName="Id_client" />
+                <ScalarProperty Name="Number_order" ColumnName="Number_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders_Services">
+            <EntityTypeMapping TypeName="SavModel.Orders_Services">
+              <MappingFragment StoreEntitySet="Orders_Services">
+                <ScalarProperty Name="Number_orders" ColumnName="Number_orders" />
+                <ScalarProperty Name="Id_services" ColumnName="Id_services" />
+                <ScalarProperty Name="Id_orders" ColumnName="Id_orders" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="SavModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name_role" ColumnName="Name_role" />
+                <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="SavModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Price_services" ColumnName="Price_services" />
+                <ScalarProperty Name="Name_servisec" ColumnName="Name_servisec" />
+                <ScalarProperty Name="Id_services" ColumnName="Id_services" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SavModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

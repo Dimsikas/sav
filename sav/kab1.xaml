@@ -1,0 +1,38 @@
+﻿<Window x:Class="sav.kab1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sav"
+        mc:Ignorable="d"
+        Title="kab1" Height="450" Width="800">
+    <Grid>
+        <Image Source="/Image/RackMultipart20151211-25122-b4va00.jpg" 
+               Height="1200" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Stretch="UniformToFill" />
+        <Border  Background="#7b533a" 
+                 Height="60" VerticalAlignment="Top" Opacity="0.6">
+            <Grid>
+                <Label Content="MediaSav" HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="52" FontFamily="Brush Script MT" />
+                <Button Width="60" HorizontalAlignment="Left" Content="-]"
+                   FontSize="34" Name ="ToMWbtn2"  Click="ToMWbtn_Click2"
+                   Margin="0 0 0 10"/>
+            </Grid>
+        </Border>
+        <Border  Background="#7b533a" 
+                 Height="434"   Opacity="0.6" Margin="0 60 590 0">
+            <Grid>
+                <StackPanel>
+                    <Button Width="210" Height="40" VerticalAlignment="Top"
+                            Content="Учет клиентов" FontSize="16"/>
+                    <Button Width="210" Height="40" VerticalAlignment="Top"
+                            Content="Введение базы сотрудников " FontSize="16"/>
+                    <Button Width="210" Height="40" VerticalAlignment="Top"
+                            Content="Распределение заказов" FontSize="16"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

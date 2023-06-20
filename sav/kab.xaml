@@ -1,0 +1,69 @@
+﻿<Window x:Class="sav.kab"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sav"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="kab" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            
+                <ColumnDefinition Width="0.35*" />
+                <ColumnDefinition Width="1*" />
+
+        </Grid.ColumnDefinitions>
+            <Image Grid.ColumnSpan="2" 
+                   Source="/Image/RackMultipart20151211-25122-b4va00.jpg" 
+               Height="1200" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Stretch="UniformToFill" />
+        <StackPanel Margin="0 70 0 0">
+            <Button Width="210" Height="40"
+                            VerticalAlignment="Top" Name="tb2"
+                            Content="Составление графика" 
+                            FontSize="16" Click="Button_Click_1"/>
+            <Button Width="210" Height="40" 
+             VerticalAlignment="Top" Content="Просмотр заказов" 
+                    FontSize="16" Name="tb" Click="tb_Click"/>
+            <Button Width="210" Height="40" Name="Tb1" VerticalAlignment="Top"
+                    Content="Контроль сотрудников" FontSize="16" Click="Tb1_Click"/>
+            <Button Width="210" Name="tb3" Height="40" VerticalAlignment="Top" 
+                    Content="Распределение заказов" FontSize="16" Click="tb3_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="1.3*" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="2" x:Name="bt10" Click="bt10_Click"
+                Content="Добавить" FontSize="28"
+                FontWeight="Black" Background="Transparent" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" Height="80" Width="150"/>
+
+            <Frame x:Name="Navfrm" Grid.Row="1"
+                   NavigationUIVisibility="Hidden"
+                   />
+        </Grid>
+       
+        <Border  Background="#7b533a" Grid.ColumnSpan="2"
+                 Height="60" VerticalAlignment="Top" Opacity="0.6">
+            <Grid>
+                <Button Width="60" HorizontalAlignment="Left" Content="-]"
+                        FontSize="34" Name ="ToMWbtn"  Click="ToMWbtn_Click" Margin="0,0,0,10"/>
+                <Label Content="MediaSav" HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="52" FontFamily="Brush Script MT" />
+            </Grid>
+        </Border>
+        <Border  Background="#7b533a" 
+                 Height="434"   Opacity="0.6" Margin="0 60 590 0">
+            <Grid>
+      
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
