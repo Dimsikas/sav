@@ -38,10 +38,5 @@ namespace sav.PageFolder.MenuPage
         {
             FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyThree());
         }
-
-        private void tb3_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

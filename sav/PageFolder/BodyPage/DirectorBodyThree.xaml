@@ -8,6 +8,10 @@
     d:DesignHeight="450"
     d:DesignWidth="570">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
         <ListView
             x:Name="MainList"
             Grid.Row="0">
@@ -24,5 +28,17 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button 
+            Grid.Row="2" 
+            x:Name="bt10" 
+            Click="bt10_Click"
+            Content="Добавить"
+            FontSize="28"
+            FontWeight="Black" 
+            Background="Transparent" 
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Bottom" 
+            Height="80"
+            Width="150"/>
     </Grid>
 </Page>

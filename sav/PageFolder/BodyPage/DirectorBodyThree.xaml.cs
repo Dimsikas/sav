@@ -1,4 +1,5 @@
-﻿using sav.NewFolder1;
+﻿using sav.ClassFolder;
+using sav.NewFolder1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,11 @@ namespace sav.PageFolder.BodyPage
             InitializeComponent();
             AppConectClass.DB = new SavEntities();
             MainList.ItemsSource = AppConectClass.DB.Employee.ToList();
+        }
+
+        private void bt10_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNavigationClass.BodyFrame.Navigate(new AddOrderWorkerPage());
         }
     }
 }
