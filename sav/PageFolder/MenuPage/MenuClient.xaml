@@ -1,25 +1,26 @@
 ﻿<Page
-    x:Class="sav.PageFolder.MenuPage.MenuDirector"
+    x:Class="sav.PageFolder.MenuPage.MenuClient"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     mc:Ignorable="d" 
-    d:DesignHeight="450" d:DesignWidth="230">
+    d:DesignHeight="450"
+    d:DesignWidth="230">
     <StackPanel Orientation="Vertical">
         <Button
             Width="210" 
             Height="40"
             VerticalAlignment="Top"
             Name="tb2"
-            Content="Составление графика" 
+            Content="Учет клиентов" 
             FontSize="16" 
             Click="tb2_Click"/>
         <Button
             Width="210"
             Height="40" 
             VerticalAlignment="Top" 
-            Content="Просмотр заказов" 
+            Content="Контроль сотрудниклв" 
             FontSize="16"
             Name="tb" 
             Click="tb_Click"/>
@@ -28,7 +29,7 @@
             Height="40" 
             Name="Tb1" 
             VerticalAlignment="Top"
-            Content="Контроль сотрудников"
+            Content="Распределение заказов"
             FontSize="16"
             Click="Tb1_Click"/>
     </StackPanel>

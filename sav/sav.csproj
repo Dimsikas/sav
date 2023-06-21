@@ -126,6 +126,9 @@
     <Compile Include="PageFolder\BodyPage\AddOrderWorkerPage.xaml.cs">
       <DependentUpon>AddOrderWorkerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\BodyPage\ClientPage.xaml.cs">
+      <DependentUpon>ClientPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\BodyPage\DirectorBodyOne.xaml.cs">
       <DependentUpon>DirectorBodyOne.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,9 @@
     </Compile>
     <Compile Include="PageFolder\BodyPage\SostavGrafickPage.xaml.cs">
       <DependentUpon>SostavGrafickPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\MenuPage\MenuClient.xaml.cs">
+      <DependentUpon>MenuClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\MenuPage\MenuDirector.xaml.cs">
       <DependentUpon>MenuDirector.xaml</DependentUpon>
@@ -192,6 +198,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\BodyPage\ClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\BodyPage\DirectorBodyOne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\BodyPage\SostavGrafickPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\MenuPage\MenuClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

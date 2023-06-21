@@ -72,8 +72,9 @@ namespace sav
                                 this.Close();
                                 break;
                             case 2:
-                                kab1 kab1 = new kab1();
-                                kab1.Show();
+                                mainWindow.Show();
+                                FrameNavigationClass.MenuFrame.Navigate(new MenuClient());
+                                //FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyOne());
                                 MessageBox.Show($"Добро пожаловать {userData.FIO_employe}!");
                                 this.Close();
                                 break;
