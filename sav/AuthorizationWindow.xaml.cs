@@ -1,4 +1,7 @@
-﻿using sav.NewFolder1;
+﻿using sav.ClassFolder;
+using sav.NewFolder1;
+using sav.PageFolder.BodyPage;
+using sav.PageFolder.MenuPage;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -62,8 +65,8 @@ namespace sav
                         switch(userData.Id_role)
                         {
                             case 1:
-                                kab kab = new kab();
-                                kab.Show();
+                                FrameNavigationClass.MenuFrame.Navigate(new MenuDirector());
+                                FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyOne());
                                 MessageBox.Show($"Добро пожаловать {userData.FIO_employe}!"); 
                                 this.Close();
                                 break;
