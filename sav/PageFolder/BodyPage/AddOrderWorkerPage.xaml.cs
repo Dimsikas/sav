@@ -38,8 +38,10 @@ namespace sav.PageFolder.BodyPage
             {
                 try
                 {
+                    int numberOrder = Convert.ToInt32(OrderTextBox.Text);
+
                     var addOrder = new Orders();
-                    addOrder.Number_order = Convert.ToInt32(OrderTextBox.Text);
+                    addOrder.Number_order = numberOrder;
                     addOrder.Id_employee = (WorkerComboBox.SelectedItem as Employee).Id_employee;
                     addOrder.Deadline = DateDatePicker.SelectedDate;
                     addOrder.Date_orders = DateTime.Today;
