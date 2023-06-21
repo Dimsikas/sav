@@ -18,6 +18,14 @@ namespace sav
             AppConectClass.DB = new SavEntities();
         }
 
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                qwerty = false;
+            }
+        }
+
         private void bt2_Click(object sender, RoutedEventArgs e)
         {
             Reg reg = new Reg();

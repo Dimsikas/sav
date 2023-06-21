@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:sav"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        IsVisibleChanged="Window_IsVisibleChanged"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Image 

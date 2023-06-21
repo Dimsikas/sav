@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="MainWindow"
+    WindowStartupLocation="CenterScreen"
     Height="530"
     Width="820">
     <Grid>
