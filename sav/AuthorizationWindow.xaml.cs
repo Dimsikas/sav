@@ -49,7 +49,7 @@ namespace sav
                 else
                 {
                     var userData =  AppConectClass.DB.Employee.FirstOrDefault(z =>
-                        z.Login == LoginTextBox.Text || z.Password == PasswordTextBox.Password);
+                        z.Login == LoginTextBox.Text && z.Password == PasswordTextBox.Password);
                     ///<!--
                     /// AppConnectClass - класс подключения
                     /// DataBase - название подключения
@@ -85,11 +85,11 @@ namespace sav
                                 MessageBox.Show($"Добро пожаловать {userData.FIO_employe}!");
                                 this.Close();
                                 break;
+
                                 default:
                                 MessageBox.Show("У вас нет доступа");
                                 break;
                         }
-                        
                     }
                     else
                     {
