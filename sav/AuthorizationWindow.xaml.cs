@@ -85,8 +85,8 @@ namespace sav
                                 this.Close();
                                 break;
                             case 4:
-                                kab3 kab3 = new kab3();
-                                kab3.Show();
+                                mainWindow.Show();
+                                FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyOne());
                                 MessageBox.Show($"Добро пожаловать {userData.FIO_employe}!");
                                 this.Close();
                                 break;

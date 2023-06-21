@@ -24,5 +24,12 @@ namespace sav
             FrameNavigationClass.MenuFrame = MenuFrame;
             FrameNavigationClass.BodyFrame = BodyFrame;
         }
+
+        private void ToMWbtn2_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+            authorizationWindow.Show();
+            this.Close();
+        }
     }
 }

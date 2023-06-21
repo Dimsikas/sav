@@ -49,5 +49,21 @@
             x:Name="BodyFrame"
             NavigationUIVisibility="Hidden"
             Grid.Column="1"/>
+        <TextBlock
+            Grid.Column="1"
+            Text="MediaSav" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            FontSize="52" 
+            FontFamily="Brush Script MT" />
+        <Button
+            Width="60"
+            Content="-]"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="30" 
+            Name ="ToMWbtn2"  
+            Click="ToMWbtn2_Click"
+            Margin="10 0 0 0"/>
     </Grid>
 </Window>
