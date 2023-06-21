@@ -1,0 +1,53 @@
+﻿<Page 
+    x:Class="sav.PageFolder.BodyPage.SostavGrafickPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d" 
+    d:DesignHeight="450"
+    d:DesignWidth="570">
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Margin="0 0 0 10" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock
+                Text="Сотрудник"
+                FontSize="20"
+                HorizontalAlignment="Left"/>
+            <ComboBox
+                FontSize="20"
+                x:Name="WorkerComboBox"
+                DisplayMemberPath="FIO_employe"
+                SelectedValuePath="Id_employee"
+                Width="320"/>
+        </StackPanel>
+        <StackPanel Margin="0 10 0 10" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock
+                Text="График"
+                FontSize="20"
+                HorizontalAlignment="Left"/>
+            <TextBox
+                FontSize="20"
+                VerticalContentAlignment="Center"
+                x:Name="GrafTextBox"
+                Width="320"/>
+        </StackPanel>
+        <StackPanel Margin="0 10 0 40" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock
+                Text="Время дату"
+                FontSize="20"
+                HorizontalAlignment="Left"/>
+            <DatePicker
+                VerticalContentAlignment="Center"
+                FontSize="20"
+                x:Name="DateDatePicker"
+                Width="320"/>
+        </StackPanel>
+        <Button
+            x:Name="AddWorkerGrafickButton"
+            Click="AddWorkerGrafickButton_Click"
+            Height="40"
+            Width="220"
+            Content="ДОБАВИТЬ"
+            Margin="0 40 0 0"/>
+    </StackPanel>
+</Page>

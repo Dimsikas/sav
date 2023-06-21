@@ -135,6 +135,9 @@
     <Compile Include="PageFolder\BodyPage\DirectorBodyThree.xaml.cs">
       <DependentUpon>DirectorBodyThree.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\BodyPage\SostavGrafickPage.xaml.cs">
+      <DependentUpon>SostavGrafickPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\MenuPage\MenuDirector.xaml.cs">
       <DependentUpon>MenuDirector.xaml</DependentUpon>
     </Compile>
@@ -198,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageFolder\BodyPage\DirectorBodyThree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\BodyPage\SostavGrafickPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

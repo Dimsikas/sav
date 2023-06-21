@@ -51,7 +51,7 @@ namespace sav.PageFolder.BodyPage
                             "Заказ успешно добавлен", "YAY",
                             MessageBoxButton.OK, MessageBoxImage.Information);
 
-                        FrameNavigationClass.BodyFrame.GoBack();
+                        FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyTho());
                     }
                 }
                 catch(Exception ex)
