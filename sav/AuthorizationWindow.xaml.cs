@@ -66,7 +66,7 @@ namespace sav
                         switch(userData.Id_role)
                         {
                             case 1:
-                                mainWindow.Show()
+                                mainWindow.Show();
                                 FrameNavigationClass.MenuFrame.Navigate(new MenuDirector());
                                 FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyOne());
                                 MessageBox.Show($"Добро пожаловать {userData.FIO_employe}!"); 
