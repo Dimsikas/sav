@@ -6,8 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="MainWindow"
-    Height="450"
-    Width="800">
+    Height="470"
+    Width="820">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230"/>
