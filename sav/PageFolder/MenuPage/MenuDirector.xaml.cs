@@ -1,4 +1,5 @@
 ﻿using sav.ClassFolder;
+using sav.PageFolder.BodyPage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +26,12 @@ namespace sav.PageFolder.MenuPage
 
         private void tb2_Click(object sender, RoutedEventArgs e)
         {
-            //FrameNavigationClass.BodyFrame.Navigate(new );
+            FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyOne());
         }
 
         private void tb_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyTho());
         }
 
         private void Tb1_Click(object sender, RoutedEventArgs e)
