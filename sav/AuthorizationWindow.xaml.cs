@@ -76,8 +76,9 @@ namespace sav
                                 this.Close();
                                 break;
                             case 4:
+                                qwerty = true;
                                 mainWindow.Show();
-                                FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyOne());
+                                FrameNavigationClass.BodyFrame.Navigate(new DirectorBodyTho());
                                 MessageBox.Show($"Добро пожаловать {userData.FIO_employe}!");
                                 this.Close();
                                 break;
