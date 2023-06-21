@@ -18,7 +18,7 @@
                         Header="НОМЕР ЗАКАЗА"
                         Width="Auto"/>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Deadline}"
+                        DisplayMemberBinding="{Binding Deadline, StringFormat='{}{0:dd.MM.yyyy}'}"
                         Header="СРОК ВЫПОЛНЕНИЯ"
                         Width="Auto"/>
                     <GridViewColumn
