@@ -20,6 +20,11 @@ namespace sav.PageFolder.BodyPage
             if (Visibility == Visibility.Visible)
             {
                 MainList.Items.Refresh();
+
+                if (AuthorizationWindow.qwerty == true)
+                {
+                    bt10.Visibility = Visibility.Collapsed;
+                }
             }
         }
 
