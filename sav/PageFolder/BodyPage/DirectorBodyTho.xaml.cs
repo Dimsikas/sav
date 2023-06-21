@@ -14,6 +14,15 @@ namespace sav.PageFolder.BodyPage
             AppConectClass.DB = new SavEntities();
             MainList.ItemsSource = AppConectClass.DB.Orders.ToList();
         }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                MainList.Items.Refresh();
+            }
+        }
+
         private void bt10_Click(object sender, RoutedEventArgs e)
         {
             FrameNavigationClass.BodyFrame.Navigate(new AddOrderWorkerPage());
