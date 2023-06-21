@@ -46,7 +46,7 @@ namespace sav.PageFolder.BodyPage
                     addOrder.Deadline = DateDatePicker.SelectedDate;
                     addOrder.Date_orders = DateTime.Today;
 
-                    if (AppConectClass.DB.Orders.Count(x => x.Number_order == Convert.ToInt32(OrderTextBox.Text)) > 0)
+                    if (AppConectClass.DB.Orders.Count(x => x.Number_order == numberOrder) > 0)
                     {
                         MessageBox.Show(
                             "В базе данных уже существует заказ с таким же номером", "Error",
